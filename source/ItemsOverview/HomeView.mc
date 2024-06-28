@@ -37,7 +37,7 @@ class HomeView extends WatchUi.View {
             items = [];
         }
 
-        for (var i = 0; i < items.size(); i += 1) {        
+        for (var i = 0; i < items.size(); i += 1) {
             menu.addItem(
                 new MenuItem(
                     items[i],
