@@ -23,11 +23,7 @@ class KeyboardListener extends WatchUi.TextPickerDelegate {
     }
 
     public function onCancel() as Boolean {
-        var dialog = new WatchUi.Confirmation("Cancel edit?");
-        var delegate = new $.EditConfirmationDelegate();
-        WatchUi.switchToView(dialog, delegate, WatchUi.SLIDE_IMMEDIATE);
-        WatchUi.pushView(dialog,delegate,WatchUi.SLIDE_IMMEDIATE);
-
+        HomeView.openHomeView();
         return true;
     }
 }
