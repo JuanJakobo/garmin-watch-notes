@@ -1,24 +1,17 @@
 import Toybox.WatchUi;
-
-class KeyboardDelegate extends WatchUi.InputDelegate {
-    public function initialize() {
-        WatchUi.InputDelegate.initialize();
-    }
-}
+import Toybox.Lang;
 
 class KeyboardListener extends WatchUi.TextPickerDelegate {
-    private var _delegate as KeyboardDelegate;
+    private var _itemId = 0;
 
-    public function initialize(delegate as KeyboardDelegate) {
+    public function initialize(id) {
         WatchUi.TextPickerDelegate.initialize();
-        _delegate = delegate;
+        _itemId = id;
     }
 
     public function onTextEntered(text as String, changed as Boolean) as Boolean {
-        var itemView = new $.ItemsView();
-        var delegate = new $.ItemsDelegate();
-        WatchUi.switchToView(itemView, delegate, WatchUi.SLIDE_IMMEDIATE);
-        WatchUi.pushView(itemView, delegate, WatchUi.SLIDE_IMMEDIATE);
+        StorageHandler.addItem(_itemId, text); 
+        HomeView.openHomeView();
         return true;
     }
 
